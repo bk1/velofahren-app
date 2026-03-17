@@ -1,0 +1,28 @@
+<ng-container *ngIf="album; else notFound">
+  <h2>{{ album.tourTitle }}</h2>
+
+  <div class="carousel" *ngIf="current">
+    <button class="nav prev" (click)="prev()">&#8592;</button>
+
+    <img
+      [src]="current.filename"
+      [alt]="current.title"
+      class="carousel-image"
+      (click)="openModal(current)"
+    />
+
+    <button class="nav next" (click)="next()">&#8594;</button>
+
+    <div class="caption">{{ current.title }}</div>
+  </div>
+
+  <app-photo-modal
+    *ngIf="selectedPhoto"
+    [photo]="selectedPhoto"
+    (close)="closeModal()"
+  />
+</ng-container>
+
+<ng-template #notFound>
+  <p>Kein Album für diese Tour gefunden.</p>
+</ng-template>

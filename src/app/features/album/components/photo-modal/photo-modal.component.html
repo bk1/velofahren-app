@@ -1,0 +1,8 @@
+<div class="modal-backdrop" (click)="dismiss()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="dismiss()">&#10005;</button>
+    <img [src]="photo.filename" [alt]="photo.title" />
+    <h2>{{ photo.title }}</h2>
+    <p *ngIf="photo.description">{{ photo.description }}</p>
+  </div>
+</div>
